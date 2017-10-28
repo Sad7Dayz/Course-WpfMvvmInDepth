@@ -6,6 +6,7 @@
         Height="350"
         Width="525">
     <Grid>
-        <customers:CustomerListView/>
+        <customers:CustomerListView Margin="0,0,0,120"/>
+        <customers:CustomerDetailView HorizontalAlignment="Left" Height="57" Margin="204,229,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

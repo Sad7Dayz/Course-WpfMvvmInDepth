@@ -4,17 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:customers="clr-namespace:MVVMHookupDemo.Customers"
+             
+             xmlns:local="clr-namespace:MVVMHookupDemo"
+             local:ViewModelLocator.AutoWireViewModel="True"
+             
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
+            
+                
+
+    <!--Demo1; HookUp-->
     <!--First way of hooking up statically out MVVM equation,
         the other one being in the 'Code Behind'-->
+    
     <!--<UserControl.DataContext>
         <customers:CustomerListViewModel></customers:CustomerListViewModel>
     </UserControl.DataContext>-->
     
     <Grid>
         
+        <!--Demo1; HookUp-->
         <DataGrid ItemsSource="{Binding Customers}"></DataGrid>                                
     </Grid>
 </UserControl>

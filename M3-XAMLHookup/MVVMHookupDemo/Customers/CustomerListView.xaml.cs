@@ -12,7 +12,8 @@ namespace MVVMHookupDemo.Customers
         {
             /*Second way of statically hooking up the MVVM equation,
              * instead of from the view (XAML)*/
-            this.DataContext = new CustomerListViewModel();
+
+            //this.DataContext = new CustomerListViewModel(); //Commented out for *Demo2 MVLocator*
             InitializeComponent();
         }
     }

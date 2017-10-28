@@ -5,13 +5,13 @@ using Zza.Data;
 
 namespace MVVMHookupDemo.Customers
 {
+
     public class CustomerListViewModel
     {
         private ICustomersRepository _customersRepository = new CustomersRepository();
         public ObservableCollection<Customer> Customers { get; set; }
 
         public CustomerListViewModel() {
-
 
             if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject())) return; 
                 /*cannot use async and await keywords in a constructor.

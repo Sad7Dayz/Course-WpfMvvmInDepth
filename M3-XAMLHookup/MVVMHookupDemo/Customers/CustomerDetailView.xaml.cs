@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MVVMHookupDemo
+namespace MVVMHookupDemo.Customers
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour CustomerDetailView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CustomerDetailView : UserControl
     {
-        public MainWindow()
+        public CustomerDetailView()
         {
             InitializeComponent();
         }
