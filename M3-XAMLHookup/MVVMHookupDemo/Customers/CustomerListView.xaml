@@ -12,6 +12,7 @@
     <!--<UserControl.DataContext>
         <customers:CustomerListViewModel></customers:CustomerListViewModel>
     </UserControl.DataContext>-->
+    
     <Grid>
         
         <DataGrid ItemsSource="{Binding Customers}"></DataGrid>                                
