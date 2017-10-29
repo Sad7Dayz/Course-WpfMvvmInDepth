@@ -1,15 +1,26 @@
 ﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Customers="clr-namespace:MVVMHookupDemo.Customers"
+        xmlns:customers="clr-namespace:MVVMHookupDemo.Customers"
+        xmlns:local="clr-namespace:MVVMHookupDemo" 
         x:Class="MVVMHookupDemo.MainWindow"
         Title="MainWindow"
         Height="350"
         Width="525">
+
+    <Window.DataContext>
+        <local:MainWindowViewModel/> <!--Demo5- Implicit DataTemplate for "ViewModel First MVVM  hookup-->
+    </Window.DataContext>
+    
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type customers:CustomerListViewModel}">
+            <customers:CustomerListView/>
+        </DataTemplate>
+
+    </Window.Resources>
     <Grid>
-
-
-        <Customers:CustomerListView />
-
-
+        <!--<Customers:CustomerListView />-->
+        
+        <!--Demo5- Implicit DataTemplate for "ViewModel First MVVM  hookup-->
+        <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
     </Grid>
 </Window>
