@@ -7,6 +7,12 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300">
+    <UserControl.InputBindings>
+        <KeyBinding Key="D"
+                    Modifiers="Control"
+                    Command="{Binding DeleteCommand}"/>
+    </UserControl.InputBindings>
+    
     <UserControl.Resources>
         <DataTemplate x:Key="CustomerTemplate">
             <Border BorderThickness="3"
@@ -19,18 +25,28 @@
             </Border>
         </DataTemplate>
     </UserControl.Resources>
+    
     <UserControl.DataContext>
         <cust:CustomerListViewModel />
     </UserControl.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
+  
+        <Button Content="Delete"
+                Command="{Binding DeleteCommand}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="75"></Button>
+
         <DataGrid x:Name="customerDataGrid"
                   AutoGenerateColumns="False"
                   ItemsSource="{Binding Customers}"
+                  SelectedItem="{Binding SelectedCustomer}"
                   Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding FirstName}"
