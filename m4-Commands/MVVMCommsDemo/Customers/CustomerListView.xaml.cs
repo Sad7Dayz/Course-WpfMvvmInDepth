@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Zza.Data;
 
 namespace MVVMCommsDemo.Customers
 {
@@ -23,6 +24,11 @@ namespace MVVMCommsDemo.Customers
         public CustomerListView()
         {
             InitializeComponent();
+        }
+
+        private void OnChangeCustomer(object sender, RoutedEventArgs e) {
+            var customer = customerDataGrid.SelectedItem as Customer;
+            customer.FirstName = "Changed in background";
         }
     }
 }

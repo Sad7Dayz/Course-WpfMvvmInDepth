@@ -54,6 +54,15 @@
                 VerticalAlignment="Top"
                 Width="75"/>
 
+        <Button Content="Change Customer"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="80,0,0,0"
+                Click="OnChangeCustomer"
+                Width="100"/>
+
+
+
         <DataGrid x:Name="customerDataGrid"
                   AutoGenerateColumns="False"
                   ItemsSource="{Binding Customers}"

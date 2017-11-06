@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Zza.Data
 {
-    public class Customer
+    public class Customer :INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
         public Customer()
         {
             Orders = new List<Order>();
@@ -23,7 +26,9 @@ namespace Zza.Data
             }
             set
             {
+                if (_firstName == value) return;
                 _firstName = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("FirstName"));
             }
         }
         public string LastName { get; set; }
