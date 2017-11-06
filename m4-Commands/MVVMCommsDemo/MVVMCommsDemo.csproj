@@ -67,13 +67,14 @@
       <DependentUpon>CustomerListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Customers\CustomerListViewModel.cs" />
-    <Compile Include="Customers\MvvmBehaviors.cs" />
+    <Compile Include="MvvmBehaviors.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Services\CustomersRepository.cs" />
     <Compile Include="Services\ICustomersRepository.cs" />
     <Compile Include="Services\IOrdersRepository.cs" />
     <Compile Include="Services\OrdersRepository.cs" />
+    <Compile Include="ShowNotificationMessageBehavior.cs" />
     <Page Include="Customers\CustomerListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
