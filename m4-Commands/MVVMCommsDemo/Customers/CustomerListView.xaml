@@ -4,17 +4,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:cust="clr-namespace:MVVMCommsDemo.Customers"
              xmlns:local="clr-namespace:MVVMCommsDemo"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              x:Class="MVVMCommsDemo.Customers.CustomerListView"
              mc:Ignorable="d"
              d:DesignHeight="300"
-             d:DesignWidth="300"
-             cust:MvvmBehaviors.LoadedMethodName="LoadCustomers">
-    <UserControl.InputBindings>
-        <KeyBinding Key="D"
-                    Modifiers="Control"
-                    Command="{Binding DeleteCommand}"/>
-    </UserControl.InputBindings>
-    
+             d:DesignWidth="300"> <!--cust:MvvmBehaviors.LoadedMethodName="LoadCustomers"-->
+
     <UserControl.Resources>
         <DataTemplate x:Key="CustomerTemplate">
             <Border BorderThickness="3"
@@ -27,23 +23,36 @@
             </Border>
         </DataTemplate>
     </UserControl.Resources>
-    
+
+    <UserControl.InputBindings>
+        <KeyBinding Key="D"
+                    Modifiers="Control"
+                    Command="{Binding DeleteCommand}"/>
+    </UserControl.InputBindings>
+
     <UserControl.DataContext>
         <cust:CustomerListViewModel />
     </UserControl.DataContext>
-    
+
+    <!--code inserted by Blend in Module 4, demo3.-->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadCustomers"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" /> 
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-  
+
         <Button Content="Delete"
                 Command="{Binding DeleteCommand}"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Width="75"></Button>
+                Width="75"/>
 
         <DataGrid x:Name="customerDataGrid"
                   AutoGenerateColumns="False"
