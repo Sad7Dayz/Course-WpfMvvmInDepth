@@ -3,10 +3,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:cust="clr-namespace:MVVMCommsDemo.Customers"
+             xmlns:local="clr-namespace:MVVMCommsDemo"
              x:Class="MVVMCommsDemo.Customers.CustomerListView"
              mc:Ignorable="d"
              d:DesignHeight="300"
-             d:DesignWidth="300">
+             d:DesignWidth="300"
+             cust:MvvmBehaviors.LoadedMethodName="LoadCustomers">
     <UserControl.InputBindings>
         <KeyBinding Key="D"
                     Modifiers="Control"
