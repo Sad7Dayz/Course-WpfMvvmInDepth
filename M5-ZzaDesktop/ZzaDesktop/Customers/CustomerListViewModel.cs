@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZzaDesktop.Customers
+﻿namespace ZzaDesktop.Customers
 {
-    public class CustomerListViewModel
+    public class CustomerListViewModel :BindableBase
     {
     }
 }
