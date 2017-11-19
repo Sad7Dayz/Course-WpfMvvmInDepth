@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xaml;
 using ZzaDesktop.Customers;
 using ZzaDesktop.OrderPrep;
 using ZzaDesktop.Orders;
@@ -21,6 +22,24 @@ namespace ZzaDesktop
             get { return _currentViewModel; }
             set { SetProperty(ref _currentViewModel,value);}
         }
+
+        public RelayCommand<string> NavCommand { get; private set; }
+
+        public MainWindowViewModel() {
+            NavCommand = new RelayCommand<string>(OnNav);
+        }
+
+        private void OnNav(string destination) {
+            switch (destination) {
+                case "orderPrep":
+                    CurrentViewModel = _orderPrepViewModel;
+                    break;
+                default:
+                    CurrentViewModel = _customerListViewModel;
+                    break;
+            }
+        }
+
 
     }
 }
