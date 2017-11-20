@@ -27,6 +27,12 @@ namespace ZzaDesktop
 
         public MainWindowViewModel() {
             NavCommand = new RelayCommand<string>(OnNav);
+            _customerListViewModel.PlaceOrderRequested += NavToOrder;
+        }
+
+        private void NavToOrder(Guid customerId) {
+            _orderViewModel.CustomerId = customerId;
+            CurrentViewModel = _orderViewModel;
         }
 
         private void OnNav(string destination) {
@@ -39,7 +45,5 @@ namespace ZzaDesktop
                     break;
             }
         }
-
-
     }
 }
