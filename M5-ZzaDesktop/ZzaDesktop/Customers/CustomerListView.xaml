@@ -10,10 +10,6 @@
             mc:Ignorable="d" 
             d:DesignHeight="300" d:DesignWidth="300">
     
-    <UserControl.DataContext>
-        <local:CustomerListViewModel/>
-    </UserControl.DataContext>
-    
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <ei:CallMethodAction TargetObject="{Binding}"

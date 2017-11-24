@@ -10,9 +10,11 @@ namespace ZzaDesktop.Customers
         private ICustomersRepository _repo = new CustomersRepository();
         private ObservableCollection<Customer> _customers;
 
-        /// <summary>To handled by the parent ViewModel, the <see cref="MainWindowViewModel"/>.</summary>
-        public event Action<Guid>  PlaceOrderRequested = delegate { };
+        // <summary>To handled by the parent ViewModel, the <see cref="MainWindowViewModel"/>.</summary>
+        public event Action<Guid> PlaceOrderRequested = delegate { };
 
+        //public event Action<Guid>  PlaceOrderRequested = delegate { };
+        //public event Action<Guid> PlaceOrderRequested = delegate { };
         public ObservableCollection<Customer> Customers {
             get { return _customers; }
             set { SetProperty(ref _customers,value); }
