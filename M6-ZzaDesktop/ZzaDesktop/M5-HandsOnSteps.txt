@@ -1,0 +1,14 @@
+Demo 6:Navigation with Parameters
+	Create navigation to happen from the 'CustomerListViewModel',
+	 which will replace the by the CustomerListView,
+	 as the current View in the top-level navigation container (MainWindowView)
+
+	 So this child ViewModel needs to be able to communicate up to its parent (the MainWindowViewModel)
+	 because that's where the navigation is being managed.
+
+	 To do this the child ViewModel (CustomerListViewModwl) will raise an event the parent (MainWindowViewModel) can handle.
+
+	 - Declare an event to be raised, in/by the CustomerListViewModel.
+	   Passing a Guid (Global Unique Identifier), the customer.id.
+
+	- ...  
