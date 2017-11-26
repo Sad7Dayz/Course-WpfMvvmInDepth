@@ -9,6 +9,10 @@
             x:Class="ZzaDesktop.Customers.CustomerListView"
             mc:Ignorable="d" 
             d:DesignHeight="300" d:DesignWidth="300">
+
+    <!--<UserControl.DataContext>
+        <local:CustomerListViewModel/>
+    </UserControl.DataContext>-->
     
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -22,16 +26,18 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+        <Grid>
+            <Button Content="Add Customer"
+                    Command="{Binding AddCustomerCommand}"
+                    HorizontalAlignment="Left"/>
+        </Grid>
         <DataGrid ItemsSource="{Binding Customers}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   Grid.Row="1">
-
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding FullName}"
                                     Width="*"/>
-
                 <DataGridTemplateColumn Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -43,7 +49,17 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit"
+                                    Command="{Binding DataContext.EditCustomerCommand,
+                                        RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding}"
+                                    Margin="5"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

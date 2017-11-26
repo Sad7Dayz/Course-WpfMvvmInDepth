@@ -12,6 +12,8 @@ namespace ZzaDesktop.Customers
 
         // <summary>To handled by the parent ViewModel, the <see cref="MainWindowViewModel"/>.</summary>
         public event Action<Guid> PlaceOrderRequested = delegate { };
+        public event Action<Customer> AddCustomerRequested = delegate { };
+         public event Action<Customer> EditCustomerRequested = delegate { };
 
         //public event Action<Guid>  PlaceOrderRequested = delegate { };
         //public event Action<Guid> PlaceOrderRequested = delegate { };
@@ -20,11 +22,23 @@ namespace ZzaDesktop.Customers
             set { SetProperty(ref _customers,value); }
         }
 
-        public RelayCommand<Customer> PlaceOrderCommand { get; private set; }
+        public RelayCommand<Customer> PlaceOrderCommand { get;}
+        public RelayCommand AddCustomerCommand { get; }
+        public RelayCommand<Customer> EditCustomerCommand { get; }
 
 
         public CustomerListViewModel() {
-            PlaceOrderCommand = new RelayCommand<Customer>(OnPlaceOrder);    
+            PlaceOrderCommand = new RelayCommand<Customer>(OnPlaceOrder);
+            AddCustomerCommand = new RelayCommand(OnAddCustomer);
+            EditCustomerCommand = new RelayCommand<Customer>(OnEditCustomer);    
+        }
+
+        private void OnEditCustomer(Customer cust) {
+            EditCustomerRequested(cust);    
+        }
+
+        private void OnAddCustomer() {
+            AddCustomerRequested(new Customer{Id = Guid.NewGuid()});
         }
 
         private void OnPlaceOrder(Customer customer) {
