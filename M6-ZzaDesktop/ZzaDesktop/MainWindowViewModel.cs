@@ -35,13 +35,13 @@ namespace ZzaDesktop
         }
 
         private void NavToEditCustomer(Customer cust) {
-            _addEditViewModel.EditMode = false;
+            _addEditViewModel.EditMode = true;
             _addEditViewModel.SetCustomer(cust);
             CurrentViewModel = _addEditViewModel;
         }
 
         private void NavToAddCustomer(Customer cust) {
-            _addEditViewModel.EditMode = true;
+            _addEditViewModel.EditMode = false;
             _addEditViewModel.SetCustomer(cust);
             CurrentViewModel = _addEditViewModel;
         }
