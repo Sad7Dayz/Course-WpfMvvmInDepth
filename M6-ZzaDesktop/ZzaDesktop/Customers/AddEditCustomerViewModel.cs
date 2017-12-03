@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,8 +34,14 @@ namespace ZzaDesktop.Customers
 
         public void SetCustomer(Customer cust) {
             _editingCustomer = cust;
+            if (Customer != null) Customer.ErrorsChanged -= RaiseCanExecuteChanged;
             Customer = new SimpleEditableCustomer();
+            Customer.ErrorsChanged += RaiseCanExecuteChanged;
             CopyCustomer(cust, Customer);
+        }
+
+        private void RaiseCanExecuteChanged(object sender, EventArgs e) {
+            SaveCommand.RaiseCanExecuteChanged();
         }
 
         private void CopyCustomer(Customer source, SimpleEditableCustomer target)  {
@@ -47,7 +54,7 @@ namespace ZzaDesktop.Customers
         }
 
         private bool CanSave() {
-            return true;
+            return !Customer.HasErrors;
         }
 
         private void OnSave() {

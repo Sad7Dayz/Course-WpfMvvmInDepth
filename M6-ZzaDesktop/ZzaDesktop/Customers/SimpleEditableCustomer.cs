@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
 namespace ZzaDesktop.Customers
 {
-    public class SimpleEditableCustomer :BindableBase
+    public class SimpleEditableCustomer : ValidatatableBindableBase
     {
         private Guid _id;
         public Guid Id {
@@ -13,24 +14,28 @@ namespace ZzaDesktop.Customers
         }
 
         private string _firstName;
+        [Required]
         public string FirstName {
             get => _firstName;
             set => SetProperty(ref _firstName,value);
         }
 
         private string _lastName;
+        [Required]
         public string LastName {
             get => _lastName;
             set => SetProperty(ref _lastName,value);
         }
 
         private string _email;
+        [EmailAddress]
         public string Email {
             get => _email;
             set => SetProperty(ref _email,value);
         }
 
         private string _phone;
+        [Phone]
         public string Phone {
             get => _phone;
             set => SetProperty(ref _phone,value);
