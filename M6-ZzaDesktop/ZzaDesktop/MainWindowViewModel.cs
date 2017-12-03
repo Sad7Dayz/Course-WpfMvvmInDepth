@@ -1,22 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xaml;
 using Zza.Data;
 using ZzaDesktop.Customers;
 using ZzaDesktop.OrderPrep;
 using ZzaDesktop.Orders;
+using ZzaDesktop.Services; 
+using Microsoft.Practices.Unity;
+using Unity;
 
 namespace ZzaDesktop
 {
     public class MainWindowViewModel :BindableBase
     {
-        private CustomerListViewModel _customerListViewModel = new CustomerListViewModel();
-        private OrderViewModel _orderViewModel = new OrderViewModel();
-        private OrderPrepViewModel _orderPrepViewModel = new OrderPrepViewModel();
-        private AddEditCustomerViewModel _addEditViewModel = new AddEditCustomerViewModel();
+        private readonly OrderViewModel _orderViewModel = new OrderViewModel();
+        private readonly OrderPrepViewModel _orderPrepViewModel = new OrderPrepViewModel();
+
+        private readonly AddEditCustomerViewModel _addEditViewModel;
+        private readonly CustomerListViewModel _customerListViewModel;
         
         private BindableBase _currentViewModel;
 
@@ -29,6 +28,13 @@ namespace ZzaDesktop
 
         public MainWindowViewModel() {
             NavCommand = new RelayCommand<string>(OnNav);
+
+            //_addEditViewModel = new AddEditCustomerViewModel(_repo);
+            //_customerListViewModel = new CustomerListViewModel(_repo);
+
+            _addEditViewModel = ContainerHelper.Container.Resolve<AddEditCustomerViewModel>();
+            _customerListViewModel = ContainerHelper.Container.Resolve<CustomerListViewModel>();
+
             _customerListViewModel.PlaceOrderRequested += NavToOrder;
             _customerListViewModel.AddCustomerRequested += NavToAddCustomer;
             _customerListViewModel.EditCustomerRequested += NavToEditCustomer;

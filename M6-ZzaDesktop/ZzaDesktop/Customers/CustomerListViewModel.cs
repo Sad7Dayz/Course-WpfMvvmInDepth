@@ -7,7 +7,7 @@ namespace ZzaDesktop.Customers
 {
     public class CustomerListViewModel :BindableBase
     {
-        private ICustomersRepository _repo = new CustomersRepository();
+        private ICustomersRepository _repo ;//= new CustomersRepository();
         private ObservableCollection<Customer> _customers;
 
         // <summary>To handled by the parent ViewModel, the <see cref="MainWindowViewModel"/>.</summary>
@@ -27,7 +27,8 @@ namespace ZzaDesktop.Customers
         public RelayCommand<Customer> EditCustomerCommand { get; }
 
 
-        public CustomerListViewModel() {
+        public CustomerListViewModel(ICustomersRepository repo) {
+            _repo = repo;
             PlaceOrderCommand = new RelayCommand<Customer>(OnPlaceOrder);
             AddCustomerCommand = new RelayCommand(OnAddCustomer);
             EditCustomerCommand = new RelayCommand<Customer>(OnEditCustomer);    
